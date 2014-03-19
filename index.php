@@ -98,26 +98,31 @@ function perturbationThridRow(){
 }
 
 function countValuesBasedOnRowTwo(){
-	$row2Perturb = perturbRowTwo();
+	$row2Perturb = perturbRowTwo();//=21 valori
 	//get nr of arrays
-	for($i = 0; $i<= count($row2Perturb);$i++){
+$sum = array();
+$test = array();
+	for($i = 0; $i< count($row2Perturb);$i++){
 		//get no of entries per row
-		for ($j=0; $j <=count(getRowValues($row2Perturb[$i])) ; $j++) { 
-			
+		//$sum[] = sumElements($i) + $row2Perturb[$i];
+		$test[] = $row2Perturb[$i];
+		
+		for ($j=0; $j < count($test[$i]) ; $j++) { 
+			$sum[] = sumElements($j) + $test[$i][$j] ;
 		}
+		
 	}
-
-	return $row2Perturb;
+	print_r($sum);
+	// print_r($sum);
 }
-function sumElements($row){
-	var $row1 = getRowValues(1);
-	var $row4 = getRowValues(4);
-	var $row5 = getRowValues(5);
-	var $row6= getRowValues(6);
-	var sumRow = 0;
-	for($i=0; i<6; i++){
 
-	}
+function sumElements($i){
+	$row1 = getRowValues(0);
+	$row4 = getRowValues(3);
+	$row5 = getRowValues(4);
+	$row6= getRowValues(5);
+	$sumRow = $row1[$i] + $row4[$i] +$row5[$i] +$row6[$i];	
+	return $sumRow;   
 }
 
 print_r(countValuesBasedOnRowTwo()) ;
